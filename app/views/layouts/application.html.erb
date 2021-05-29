@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FacebookClone</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+          <ul class="top_menu row">
+            <% if logged_in? %>
+              <li class="col-md-4"><%= link_to "Profile", user_path(current_user.id) %></li>
+              <li class="col-md-4"><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
+              <li class="col-md-4"><%= link_to "posts list", feeds_path%></li>
+            <% else %>
+              <li class="col-md-4"><%= link_to "Sign up", new_user_path %></li>
+              <li class="col-md-4"><%= link_to "Login", new_session_path %></li>
+              <li class="col-md-4"><%= link_to "posts list", feeds_path%></li>
+            <% end %>
+          </ul>
+      </header>
+
+      <% flash.each do |key, value| %>
+         <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      <%= yield %>
+
+      <footer>
+        <p>facebook clone</p>
+      </footer>
+    </div>
+  </body>
+</html>
