@@ -63,7 +63,7 @@
  }
  footer {
    width: 100%;
-   background-color: #003366;
+  background-color: #003366;
    padding: 20px 0 10px 0;
    color: white;
    margin: auto;
@@ -72,3 +72,8 @@
    position: absolute;
    bottom: 0;
  }
+  li :hover {
+  	color:white;
+    opacity: 0.5;
+    text-decoration: none;
+  }
